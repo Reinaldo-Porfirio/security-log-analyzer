@@ -1,0 +1,4 @@
+Jan 10 10:15:32 server sshd[1234]: Failed password for invalid user admin from 192.168.1.10 port 22
+Jan 10 10:15:35 server sshd[1234]: Failed password for invalid user admin from 192.168.1.10 port 22
+Jan 10 10:15:38 server sshd[1234]: Failed password for invalid user admin from 192.168.1.10 port 22
+Jan 10 10:15:41 server sshd[1234]: Failed password for invalid user root from 10.0.0.5 port 22
