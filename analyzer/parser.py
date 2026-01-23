@@ -1,16 +1,23 @@
-import re
-
-def parse_log(file_path):
+def parse_log(log_file):
     """
-    Lê um arquivo de log e extrai os IPs de tentativas de login falhas.
+    Lê o arquivo de log e retorna um dicionário
+    com a contagem de tentativas por IP.
     """
-    ips = []
+    ip_counts = {}
 
-    with open(file_path, "r") as file:
+    with open(log_file, "r") as file:
         for line in file:
             if "Failed password" in line:
-                match = re.search(r"\d+\.\d+\.\d+\.\d+", line)
-                if match:
-                    ips.append(match.group())
+                parts = line.split()
 
-    return ips
+                if "from" in parts:
+                    ip_index = parts.index("from") + 1
+                    ip = parts[ip_index]
+
+                    if ip in ip_counts:
+                        ip_counts[ip] += 1
+                    else:
+                        ip_counts[ip] = 1
+
+    return ip_counts
+
