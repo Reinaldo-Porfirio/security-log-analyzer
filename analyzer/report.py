@@ -1,8 +1,14 @@
 import csv
+import os
 from datetime import datetime
 
 def generate_csv_report(suspects, output_dir="reports"):
-    "Isso aqui vai ser para gerar um relatório CSV dos IPs suspeitos."
+    """
+    Gera um relatório CSV com IPs suspeitos.
+    """
+    # Garante que o diretório existe
+    os.makedirs(output_dir, exist_ok=True)
+
     timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     filename = f"{output_dir}/security_report_{timestamp}.csv"
 
@@ -14,3 +20,4 @@ def generate_csv_report(suspects, output_dir="reports"):
             writer.writerow([ip, attempts])
 
     return filename
+
