@@ -11,7 +11,7 @@ load_dotenv()
 
 console = Console()
 
-log_file = os.getenv("LOG_FILE")
+log_file = os.getenv("LOG_FILE", "logs/auth.log")
 threshold = int(os.getenv("BRUTEFORCE_THRESHOLD", 3))
 ips = parse_log(log_file)
 suspects = detect_bruteforce(ips, threshold)
